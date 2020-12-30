@@ -8,12 +8,17 @@ except:
     import os
 import math
 window = Tk()
-window.title("Clock")
+window.title("Time Clock")
 window.geometry('500x250')
 stopwatch_counter_num = 66600
 stopwatch_running = False
 
+def time_in(time):
+        print(time)
+
+
 def clock():
+
         date_time = datetime.datetime.now().strftime("%d-%m-%Y %H:%M:%S/%p")
         date,time1 = date_time.split()
         time2,time3 = time1.split('/')
@@ -29,7 +34,6 @@ def clock():
 def clockin():
         emp1 = 'Melonie'
         emp2 = 'Meade'
-        tk.Label(window, text='Name').grid(row=0)
 
 
 
@@ -59,13 +63,12 @@ tabs_control = ttk.Notebook(window)
 clock_tab = Frame(tabs_control)
 
 stopwatch_tab = Frame(tabs_control)
-clockin_tab = Frame(tabs_control)
+
 
 tabs_control.add(clock_tab, text="Clock")
 
 tabs_control.add(stopwatch_tab, text='Stopwatch')
 
-tabs_control.add(clockin_tab, text='Clock-In')
 
 tabs_control.pack(expand = 1, fill ="both")
 time_label = Label(clock_tab, font = 'calibri 40 bold', foreground = 'black')
@@ -81,5 +84,8 @@ stopwatch_stop = Button(stopwatch_tab, text='Stop', state='disabled',command=lam
 stopwatch_stop.pack(anchor='center')
 stopwatch_reset = Button(stopwatch_tab, text='Reset', state='disabled', command=lambda:stopwatch('reset'))
 stopwatch_reset.pack(anchor='center')
+time_in_button = Button(clock_tab,height=75, width=100, command=lambda:time_in(12))
+time_in_button.pack(anchor='s')
 clock()
+
 window.mainloop()
